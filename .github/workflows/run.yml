@@ -17,7 +17,6 @@ jobs:
   bili&tieba:
     runs-on: ubuntu-latest
     if: github.repository != 'happy888888/BiliExp' || github.event_name == 'workflow_dispatch'
-    if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
     - uses: actions/checkout@v2
@@ -40,6 +39,6 @@ jobs:
           SIMPLIFIED: 1
 
     - name: 'Start Sign'
-        env:
-          BDUSS: ${{ secrets.BDUSS }}
-        run: python tieba.py
+      env:
+        BDUSS: ${{ secrets.BDUSS }}
+      run: python tieba.py
