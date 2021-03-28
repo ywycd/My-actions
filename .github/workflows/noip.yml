@@ -27,5 +27,5 @@ jobs:
         PW: ${{ secrets.PW }}
         
     - name: run noip's docker 
-      run: docker run --rm -it simaofsilva/noip-renewer ${EMAIL} ${PW}
+      run: docker run --rm simaofsilva/noip-renewer ${EMAIL} ${PW}
 
