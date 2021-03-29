@@ -1,4 +1,4 @@
-name: 'run my-acions'
+name: 'My-acions'
 
 on:
   schedule:
