@@ -1,7 +1,7 @@
 # My-actions
 收集action项目
 
-action签到大杂烩 [BlueskyClouds/My-Actions](https://github.com/BlueskyClouds/My-Actions)
+action大杂烩 [BlueskyClouds/My-Actions](https://github.com/BlueskyClouds/My-Actions)
 
 
 [luolongfei/freenom](https://github.com/luolongfei/freenom) 
