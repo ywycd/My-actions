@@ -1,0 +1,15 @@
+import hashlib
+
+secret = 'd6da13f976e1381a20dd014f2d0e755287c78a72f1a46152e366f4ed41af280a'
+
+def sha256(todo):
+	return hashlib.sha256(str(todo).encode()).hexdigest()
+
+def md5(todo):
+	return hashlib.md5(str(todo).encode()).hexdigest()
+
+for value in range(0,10000000):
+	s = sha256(md5(value))
+	if s == secret:
+		print(f'find:{s} = {value}')
+		break
