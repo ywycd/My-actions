@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  headscale:
+    container_name: headscale
+    image: headscale/headscale:latest
+    ports:
+      - '8080:8080'
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv6.conf.all.forwarding=1
+    restart: always
+    volumes:
+    # 这里挂载当前目录到容器中
+      - ./:/etc/headscale
+      - ./data:/var/lib/headscale
+    command: ['headscale', 'serve']
+  headscale-webui:
+    image: ifargle/headscale-webui:latest
+    container_name: headscale-webui
+    ports:
+      - '5000:5000'
+    environment:
+      - TZ=Asia/ShangHai
+      - COLOR=red                              
+      - HS_SERVER=https://headscale.$DOMAIN 
+      - DOMAIN_NAME=https://headscale.$DOMAIN
+      - KEY="wuRN0gNzzNGHFM43Ti1z8j93iTZEvgCa5MQV56Mtpu0="             
+      - AUTH_TYPE=basic                        
+      - LOG_LEVEL=info                        
+      # ENV for Basic Auth (Used only if AUTH_TYPE is "Basic").  Can be omitted if you aren't using Basic Auth
+      - BASIC_AUTH_USER=user                 
+      - BASIC_AUTH_PASS=password                 
+    volumes:
+      - ./data:/data                        
+      - ./:/etc/headscale/:ro   
+volumes:
+  config:
+  data: 
