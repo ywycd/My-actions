@@ -25,7 +25,7 @@ services:
     ports:
       - '5000:5000'
     environment:
-      - TZ=Asia/ShangHai
+      - TZ=Asia/Shanghai
       - COLOR=red                              
       - HS_SERVER=https://headscale.$DOMAIN 
       - DOMAIN_NAME=https://headscale.$DOMAIN
